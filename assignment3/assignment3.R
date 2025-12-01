@@ -31,6 +31,7 @@ Year_Built <- house.data$Year_Built
 Price <- house.data$Price
 
 
+# Variable Summaries
 summary(Sqft)
 summary(Num_Baths)
 summary(Num_Beds)
@@ -40,17 +41,28 @@ summary(Year_Built)
 summary(Price)
 
 
+# Histograms and Barcharts
 hist(Sqft)
-hist(Num_Bathrooms)
-hist(Num_Bedrooms)
+
+# THESE ARE BAD
+hist(Num_Baths)
+hist(Num_Beds)
+
+# BETTER FOR WHOLE NUMBER VALUES
+barplot(table(Num_Baths),
+        main = "Bar Chart of Num_Baths",
+        xlab = "Number of Bathrooms",
+        ylab = "Count")
+
+barplot(table(Num_Beds),
+        main = "Bar Chart of Num_Baths",
+        xlab = "Number of Bathrooms",
+        ylab = "Count")
+
+
 hist(Location_Score)
 hist(Distance_to_Center)
 hist(Price)
-
-# SQFT vs Price
-ggplot(house.data, aes(x = Sqft, y = Price)) +
-  geom_point() +
-  stat_smooth(method = "lm")
 
 #####################################################################################
 # Linear Regression Models
@@ -115,20 +127,20 @@ ggplot(aug2, aes(x = .fitted, y = .resid)) +
 # KNN Model
 #################################################################################
 
-n <- nrow(epi.data)
+n <- nrow(house.data)
 s.train <- sample(1:n, 0.7 * n)
-epi.train <-epi.data[s.train,]
-epi.test <-epi.data[-s.train,] 
+house.train <-house.data[s.train,]
+house.test <-house.data[-s.train,] 
 
-## Inputs
-inputs <- c("ECO.new", "TBN.new", "BDH.new")
+# Inputs
+inputs <- c("Sqft", "Num_Beds", "Num_Baths")
 
 # Training and testing
-train1 <- epi.train[, inputs]
-test1  <- epi.test[, inputs]
+train1 <- house.train[, inputs]
+test1  <- house.test[, inputs]
 
-train_labels <- epi.train$region
-test_labels  <- epi.test$region
+train_labels <- house.train$region
+test_labels  <- house.test$region
 
 # Seeing which value of k is best (from 1-10)
 k_values <- 1:10
