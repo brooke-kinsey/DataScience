@@ -91,6 +91,7 @@ lm2 <- lm(Price ~ Num_Beds + Num_Baths, data = house.data)
 
 summary(lm2)
 
+
 # Plot graph
 ggplot(house.data, aes(x = Num_Beds + Num_Baths, y = Price)) +
   geom_point() +
@@ -123,7 +124,7 @@ ggplot(aug3, aes(x = .fitted, y = .resid)) +
 
 
 # NUM_FLOORS vs PRICE
-lm4 <- lm(Price ~ Num_Floors, data = house.data)
+lm4 <- lm(Price ~ Location_Score + , data = house.data)
 
 summary(lm4)
 
@@ -209,7 +210,7 @@ ggplot(house.train, aes(x = Square_Feet, y = Num_Bedrooms, color = price.range))
                                 "medium" = "green", 
                                 "high" = "blue")) +
   labs(
-    title = "House Price Clusters by Square Footage and Number of Bedrooms",
+    title = "House Price Clusters by Square Footage and Number of Bedrooms (Training Data)",
     x = "Square Feet",
     y = "Number of Bedrooms",
     color = "Price Range"
@@ -222,7 +223,7 @@ ggplot(house.test, aes(x = Square_Feet, y = Num_Bedrooms, color = price.range)) 
                                 "medium" = "green", 
                                 "high" = "blue")) +
   labs(
-    title = "House Price Clusters by Square Footage and Number of Bedrooms",
+    title = "House Price Clusters by Square Footage and Number of Bedrooms (Test Data)",
     x = "Square Feet",
     y = "Number of Bedrooms",
     color = "Price Range"
@@ -234,17 +235,17 @@ ggplot(house.test, aes(x = Square_Feet, y = Num_Bedrooms, color = price.range)) 
 train_labels <- house.train$price.range
 test_labels  <- house.test$price.range
 
-# --- Model 1: Square feet, bedrooms, bathrooms ---
-features1 <- c("Square_Feet", "Num_Bedrooms", "Num_Bathrooms")
+# Model 1: Square feet, bedrooms
+features1 <- c("Square_Feet", "Num_Bedrooms")
 train1 <- house.train[, features1]
 test1  <- house.test[, features1]
 
-# --- Model 2: Location score, distance to center ---
+# Model 2: Location score, distance to center
 features2 <- c("Location_Score", "Distance_to_Center")
 train2 <- house.train[, features2]
 test2  <- house.test[, features2]
 
-# --- Choose k (sqrt of training set size) ---
+# Choose k (sqrt of training set size)
 k_value <- round(sqrt(nrow(train1)))
 
 # --- Train KNN models ---
