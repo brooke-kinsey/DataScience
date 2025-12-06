@@ -1,0 +1,195 @@
+﻿This documentation file was generated on 2025-10-07 by Timofey Tylik
+
+
+
+
+-------------------
+# GENERAL INFORMATION
+-------------------
+
+
+
+
+1. Title of Dataset 
+Time to reach room temperature based on liquid
+
+
+2. Creator Information
+
+
+Name: Brooke Kinsey
+Institution: Rensselaer Polytechnic Institute
+College, School or Department: Department of Computer Science
+Email: kinseb2@rpi.edu
+
+
+3. Collaborator information
+
+
+Name: Jennifer Kearny
+Institution: Rensselaer Polytechnic Institute
+College, School or Department: Department of Computer Science
+Email: kearnj@rpi.edu
+
+
+Name: Timofey Tylik
+Institution: Rensselaer Polytechnic Institute
+College, School or Department: Department of Computer Science
+Email: tylikt@rpi.edu
+
+
+4. Contact Information 
+
+
+Name: Brooke Kinsey
+Institution: Rensselaer Polytechnic Institute
+College, School or Department: Department of Computer Science
+Address: 
+Email: kinseb2@rpi.edu
+
+
+
+
+-------------------
+CONTEXTUAL INFORMATION
+-------------------
+
+
+1. Abstract for the dataset 
+
+
+In this data set we measured the time it took for different liquids to reach room temperature after being removed from the fridge.
+
+
+2. Context of the research project that this dataset was collected for.
+
+
+This data set was collected as part of Assignment 2 for the Data Science, CSCI 4350, course at RPI.
+
+
+3. Date of data collection:
+2025-10-06
+
+
+4. Geographic location of data collection:
+Troy, NY, USA
+
+
+5. Funding sources that supported the collection of the data:
+None
+
+
+
+
+--------------------------
+SHARING/ACCESS INFORMATION
+-------------------------- 
+
+
+
+
+1. Licenses/restrictions placed on the data:
+This work is on the public domain
+
+
+2. Links to other publicly accessible locations of the data:
+Data Science Liquid Experiment
+
+
+
+
+
+
+--------------------------
+VERSIONING AND PROVENANCE
+-------------------------- 
+
+
+1. Last modification date
+2025-10-06
+
+
+2. Was data derived from another source?
+No
+
+
+--------------------------
+METHODOLOGICAL INFORMATION
+--------------------------
+
+
+1. Description of methods used for collection/generation of data: 
+A single thermometer was used to measure the temperature of each of the liquids until the temperature stopped changing. The initial and final temperatures were recorded, in addition to the time it took for the temperature to reach equilibrium.
+
+
+2. Methods for processing the data: 
+The processing was minimal with the initial and final temperatures being recorded and the total time being calculated by subtracting the start time from the end time.
+
+
+3. Instrument- or software-specific information needed to interpret the data:
+The only software required to interpret the dataset is Google Sheets. Alternatively, the data can be downloaded as a CSV and interpreted in any other way necessary.
+
+
+
+
+---------------------
+DATA & FILE OVERVIEW
+---------------------
+
+
+
+
+1. File List
+   A. Filename:        “Data Science Liquid Experiment”
+      Short description:        This file contains a table where the data recorded is stored.
+
+
+2. Formats
+Google Sheet
+
+
+
+
+
+
+-----------------------------------------
+TABULAR DATA-SPECIFIC INFORMATION FOR: [FILENAME]
+-----------------------------------------
+
+
+
+
+1. Number of variables: 3
+
+
+
+
+2. Number of cases/rows: 5
+
+
+
+
+3. Variable List
+
+
+    A. Name: Starting Temperature
+       Description: Starting temperature of the liquid.
+                37℉ for all liquids
+
+
+
+
+    B. Name: Final Temperature
+       Description: The final temperature of the liquid
+                    70℉ for all liquids
+
+
+
+
+    C. Name: Time Elapsed
+       Description: The time it took for the temperature to reach final temp
+                    Recorded in minutes and seconds
+
+
+    D. Name: Liquid
+       Description: The liquid being measured
