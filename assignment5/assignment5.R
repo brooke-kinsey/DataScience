@@ -183,7 +183,9 @@ ggplot(bean.data, aes(x = ShapeFactor4, y = Class)) +
 #solve the problem you chose in 5-6 sentences.
 ################################################################################
 
+#######################################################################
 # Classifier (KNN Model)
+#######################################################################
 set.seed(123)
 n <- nrow(bean.data)
 train.idx <- sample(1:n, size = 0.7*n)
@@ -195,7 +197,7 @@ train.y <- train.data$Class
 test.y  <- test.data$Class
 
 # Select subset of predictors
-predictors <- c("Area", "Perimeter") 
+predictors <- c("Area", "Perimeter", "MajorAxisLength", "MinorAxisLength") 
 
 train.x <- train.data[, predictors]
 test.x  <- test.data[, predictors]
@@ -229,13 +231,27 @@ accuracy <- mean(knn.pred == test.y)
 confusion
 accuracy
 
+# Precision/Recall
+cm_knn <- confusion
 
+# Precision for each class
+knn.precision <- diag(cm_knn) / colSums(cm_knn)
+
+# Recall for each class
+knn.recall <- diag(cm_knn) / rowSums(cm_knn)
+
+knn.precision
+knn.recall
+
+
+#######################################################################
 # Random Forest
+#######################################################################
 train.data$Class <- as.factor(train.data$Class)
 test.data$Class  <- as.factor(test.data$Class)
 
 rf.model <- randomForest(
-  Class ~ Area + Perimeter,
+  Class ~ Area + Perimeter + MajorAxisLength + MinorAxisLength,
   data = train.data,
   ntree = 500,
   mtry = 2,
@@ -251,6 +267,19 @@ rf.accuracy <- mean(rf.pred == test.y)
 
 rf.confusion
 rf.accuracy
+
+# Precision/Recall
+cm_rf <- rf.confusion
+
+# Precision for each class
+rf.precision <- diag(cm_rf) / colSums(cm_rf)
+
+# Recall for each class
+rf.recall <- diag(cm_rf) / rowSums(cm_rf)
+
+rf.precision
+rf.recall
+
 
 # Variable importance
 importance(rf.model)
